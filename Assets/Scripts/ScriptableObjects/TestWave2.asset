@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: TestWave2
   m_EditorClassIdentifier: 
   Enemies:
-  - EnemyController: {fileID: 3093939474225099031, guid: 6b9136a952f47044b9aa6f7d7d581b2a,
-      type: 3}
+  - EnemyData: {fileID: 11400000, guid: d59980b64470dd948b14418d0e936d98, type: 2}
+    SpawnInterval: 2
     Count: 5
-  - EnemyController: {fileID: 6557448988631458668, guid: 55ba2402921f2064596655080125dc00,
-      type: 3}
+  - EnemyData: {fileID: 11400000, guid: 3b1f2998e3735e74aa39accfaba09a3f, type: 2}
+    SpawnInterval: 2
     Count: 10
