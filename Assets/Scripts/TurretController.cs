@@ -4,6 +4,14 @@ public class TurretController : MonoBehaviour
 {
     [SerializeField]
     private TurretData TurretData;
+
+    [SerializeField]
+    private GameObject BulletPrefab;
+
+    [SerializeField]
+    private Transform TurretRotation;
+    private Transform BulletSpawn;
+
     public Transform Target;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -47,7 +55,7 @@ public class TurretController : MonoBehaviour
 
     void Shoot()
     {
-
+        GameObject bullet = Instantiate(BulletPrefab, BulletSpawn.position, BulletSpawn.rotation);
     }
 
     private void OnDrawGizmosSelected()
