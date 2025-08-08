@@ -1,4 +1,5 @@
 using UnityEngine;
+using static UnityEngine.GraphicsBuffer;
 
 public class TurretController : MonoBehaviour
 {
@@ -10,10 +11,13 @@ public class TurretController : MonoBehaviour
 
     [SerializeField]
     private Transform TurretRotation;
+    [SerializeField]
     private Transform BulletSpawn;
 
     public Transform Target;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+
+    private float shootingCooldown = 0f;
+
     void Start()
     {
         InvokeRepeating(nameof(UpdateTarget), 0f, 0.5f);
@@ -44,18 +48,53 @@ public class TurretController : MonoBehaviour
             Target = null;
         }
     }
-    // Update is called once per frame
+
     void Update()
     {
         if (Target == null)
         {
-            return; // No target to shoot at
+            return;
         }
+
+        RotateToTarget();
+
+        if (!IsTargetAligned())
+        {
+            return;
+        }
+
+        if(shootingCooldown <= 0f)
+        {
+            Shoot();
+            shootingCooldown = 1f / TurretData.FireRate;
+        }
+
+        shootingCooldown -= Time.deltaTime;
+    }
+
+    void RotateToTarget()
+    {
+        Vector3 dir = Target.position - transform.position;
+        Quaternion lookRotation = Quaternion.LookRotation(dir);
+        Vector3 rotation = Quaternion.Lerp(TurretRotation.rotation, lookRotation, Time.deltaTime * TurretData.RotationSpeed).eulerAngles;
+        TurretRotation.rotation = Quaternion.Euler(0f, rotation.y, 0f);
+    }
+    bool IsTargetAligned()
+    {
+        Vector3 dirToTarget = (Target.position - TurretRotation.position).normalized;
+        float angle = Vector3.Angle(TurretRotation.forward, dirToTarget);
+        return angle < 20f;
     }
 
     void Shoot()
     {
         GameObject bullet = Instantiate(BulletPrefab, BulletSpawn.position, BulletSpawn.rotation);
+        BulletController bulletController = bullet.GetComponent<BulletController>();
+
+        if (bullet != null)
+        {
+            bulletController.SetTarget(Target);
+        }
     }
 
     private void OnDrawGizmosSelected()

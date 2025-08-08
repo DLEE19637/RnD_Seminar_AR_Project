@@ -9,11 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5e87248c11ec2d44fb2210f9e02ee34b, type: 3}
-  m_Name: TestEnemyData
+  m_Script: {fileID: 11500000, guid: f820316466d32954a855409fe17f7d4e, type: 3}
+  m_Name: TestBullet1
   m_EditorClassIdentifier: 
-  EnemyPrefab: {fileID: 4796987609414291488, guid: 55ba2402921f2064596655080125dc00,
+  BulletPrefab: {fileID: 2929950086595481919, guid: 8b1e53784fa1b0b4f94a2f76d96daf71,
     type: 3}
-  EnemyName: Test1
-  Health: 120
-  Speed: 2
+  Damage: 20
+  Speed: 5
+  Type: 0

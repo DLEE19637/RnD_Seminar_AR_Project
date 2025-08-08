@@ -8,4 +8,5 @@ public class TurretData : ScriptableObject
     public int Cost;
     public float Range;
     public float FireRate;
+    public float RotationSpeed;
 }

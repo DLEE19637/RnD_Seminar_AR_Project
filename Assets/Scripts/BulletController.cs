@@ -12,6 +12,8 @@ public class BulletController : MonoBehaviour
     private int damage;
     private float speed;
 
+    //private float lifeTime = 10f;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -26,12 +28,11 @@ public class BulletController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (EnemyTarget == null)
+        if (EnemyTarget == null && BulletData.Type != BulletType.Piercing)
         {
             Destroy(gameObject);
             return;
         }
-
 
         Vector3 direction = EnemyTarget.position - transform.position;
         float distanceThisFrame = speed * Time.deltaTime;
@@ -44,12 +45,24 @@ public class BulletController : MonoBehaviour
 
         transform.Translate(direction.normalized * distanceThisFrame, Space.World);
         transform.LookAt(EnemyTarget);
+
+        //if (lifeTime <= 0f)
+        //{
+        //    Destroy(gameObject);
+        //}
+        //else
+        //{
+        //    lifeTime -= Time.deltaTime;
+        //}
     }
 
     void HitTarget()
     {
         Damage(EnemyTarget);
-        Destroy(gameObject);
+        if (BulletData.Type != BulletType.Piercing)
+        {
+            Destroy(gameObject);
+        }
     }
     void Damage(Transform enemy)
     {

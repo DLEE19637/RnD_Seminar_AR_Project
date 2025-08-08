@@ -16,6 +16,11 @@ public class EnemyController : MonoBehaviour
 
     void Update()
     {
+        if (GameManager.Instance.Base == null)
+        {
+            return;
+        }
+
         Vector3 direction = GameManager.Instance.Base.transform.position - transform.position;
         transform.Translate(direction.normalized * EnemyData.Speed * Time.deltaTime, Space.World);
     }
