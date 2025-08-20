@@ -1,94 +1,65 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class EnemySpawner : MonoBehaviour
 {
-    [SerializeField]
-    private List<WaveData> Waves;
+    public UnityEvent<EnemyController> OnSpawnEnemy;
 
     [SerializeField]
-    private float waveInterval = 10f;
-    private float countDown = 2f;
-
-    private int currentWaveIndex = 0;
-
-    private bool waveSpawning = false;
-    private List<GameObject> aliveEnemies = new List<GameObject>();
+    private List<LevelData> Levels;
 
 
-    void Start()
-    {
-        
-    }
+    [SerializeField]
+    private float _waveInterval = 10f;
+    private float _timer = 0;
+
+    private readonly int _currentWaveIndex = 0;
+    private readonly int _currentLevelIndex = 0;
+
+    [SerializeField]
+    private List<Transform> Waypoints = new();
 
     // Update is called once per frame
 
-    void Update()
+    private void Awake()
     {
-        // If wave is in progress, check if all enemies are dead
-        if (waveSpawning)
+        _timer = _waveInterval;
+    }
+
+    private void Update()
+    {
+        _timer -= Time.deltaTime;
+        if (_timer > 0)
         {
-            // Clean up any destroyed enemies
-            aliveEnemies.RemoveAll(e => e == null);
-
-            if (aliveEnemies.Count == 0)
-            {
-                waveSpawning = false;
-                countDown = waveInterval; // start countdown to next wave
-            }
-
             return;
         }
 
-        // If we are between waves
-        if (countDown > 0f)
+        StartSpawning(Levels[_currentLevelIndex].Enemies[_currentWaveIndex]);
+        _timer = _waveInterval;
+    }
+
+    private void StartSpawning(WaveEntry waveEntry)
+    {
+        StartCoroutine(SpawnWave(waveEntry));
+    }
+
+    private IEnumerator SpawnWave(WaveEntry waveEntry)
+    {
+        for (int i = 0; i < waveEntry.Count; ++i)
         {
-            countDown -= Time.deltaTime;
-            if (countDown <= 0f)
-            {
-                StartCoroutine(StartNextWave());
-            }
+            OnSpawnEnemy.Invoke(SpawnEnemy(waveEntry.EnemyData.EnemyPrefab));
+            yield return new WaitForSeconds(waveEntry.SpawnInterval);
         }
     }
 
-
-    IEnumerator StartNextWave()
+    private EnemyController SpawnEnemy(GameObject enemy)
     {
-        if (currentWaveIndex >= Waves.Count)
-        {
-            Debug.Log("All waves completed.");
-            yield break;
-        }
-
-        Debug.Log($"Spawning Wave {currentWaveIndex + 1}");
-        yield return StartCoroutine(SpawnWave(Waves[currentWaveIndex]));
-        waveSpawning = true;
-        currentWaveIndex++;
-    }
-
-    IEnumerator SpawnWave(WaveData waveData)
-    {
-        for (int i = 0; i < waveData.Enemies.Count; i++)
-        {
-            StartCoroutine(SpawnWaveEntry(waveData.Enemies[i]));
-        }
-
-        yield break;
-    }
-
-    IEnumerator SpawnWaveEntry(WaveEntry entry)
-    {
-        for (int j = 0; j < entry.Count; j++)
-        {
-            GameObject enemy = SpawnEnemy(entry.EnemyData);
-            aliveEnemies.Add(enemy);
-            yield return new WaitForSeconds(entry.SpawnInterval);
-        }
-    }
-
-    GameObject SpawnEnemy(EnemyData enemyData)
-    {
-        return Instantiate(enemyData.EnemyPrefab, transform.position, Quaternion.identity, transform);
+        var enemyObject = Instantiate(enemy, Waypoints.First());
+        var enemyController = enemyObject.GetComponent<EnemyController>();
+        enemyController.WayPoints = Waypoints;
+        return enemyController;
     }
 }

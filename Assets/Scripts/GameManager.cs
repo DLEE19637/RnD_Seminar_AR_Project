@@ -3,10 +3,7 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
-    public GameManager()
-    {
-        
-    }
+
     private void Awake()
     {
         if (Instance == null)
@@ -28,17 +25,5 @@ public class GameManager : MonoBehaviour
     {
         CurrentState = newState;
         Debug.Log("Game state changed to: " + newState);
-    }
-
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

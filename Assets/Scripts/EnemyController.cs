@@ -1,19 +1,59 @@
+using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
+[RequireComponent(typeof(EnemyMovement))]
+[RequireComponent(typeof(Health))]
 public class EnemyController : MonoBehaviour
 {
     [SerializeField]
     private EnemyData EnemyData;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    private EnemyMovement _enemyMovement;
+    private Health _health;
+
+    [System.NonSerialized]
+    public UnityEvent<EnemyController> ReachedEnd = new();
+    [System.NonSerialized]
+    public UnityEvent<EnemyController> Died = new();
+
+    public List<Transform> WayPoints
+    {
+        get => _enemyMovement.WayPoints;
+        set => _enemyMovement.WayPoints = value;
+    }
+
     void Start()
     {
-        
+        _enemyMovement = GetComponent<EnemyMovement>();
+        _enemyMovement.ReachedEnd.AddListener(OnReachedEnd);
+
+        _health = GetComponent<Health>();
+        _health.SetMaxHealth(EnemyData.Health);
+        _health.Died.AddListener(OnDied);
+    }
+
+    public void Damage(int damage)
+    {
+        _health.Damage(damage);
+    }
+
+    private void OnDied()
+    {
+        Died.Invoke(this);
+
+        Destroy(gameObject);
+    }
+
+    private void OnReachedEnd()
+    {
+        ReachedEnd.Invoke(this);
+
+        Destroy(gameObject);
     }
 
     // Update is called once per frame
     void Update()
     {
-        Vector3 direction = GameManager.Instance.Base.transform.position - transform.position;
-        transform.Translate(direction.normalized * EnemyData.Speed * Time.deltaTime, Space.World);
+        _enemyMovement.Move(EnemyData.Speed);
     }
 }
