@@ -172,7 +172,7 @@ GameObject:
   - component: {fileID: 3093939474225099031}
   m_Layer: 0
   m_Name: EnemyTest2
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -229,6 +229,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   EnemyData: {fileID: 11400000, guid: d59980b64470dd948b14418d0e936d98, type: 2}
+  Health: 0
+  Speed: 0
 --- !u!1 &5482773737985245901
 GameObject:
   m_ObjectHideFlags: 0

@@ -31,6 +31,7 @@ public class EnemySpawner : MonoBehaviour
 
     private void Update()
     {
+        DrawWayPoints();
         _timer -= Time.deltaTime;
         if (_timer > 0)
         {
@@ -57,9 +58,17 @@ public class EnemySpawner : MonoBehaviour
 
     private EnemyController SpawnEnemy(GameObject enemy)
     {
-        var enemyObject = Instantiate(enemy, Waypoints.First());
+        var enemyObject = Instantiate(enemy, Waypoints.First().position, Quaternion.identity);
         var enemyController = enemyObject.GetComponent<EnemyController>();
         enemyController.WayPoints = Waypoints;
         return enemyController;
+    }
+
+    private void DrawWayPoints()
+    {
+        for (int i = 0; i < Waypoints.Count - 1; ++i)
+        {
+            Debug.DrawLine(Waypoints[i].position, Waypoints[i + 1].position);
+        }
     }
 }

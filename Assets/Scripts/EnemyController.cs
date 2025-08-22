@@ -16,16 +16,13 @@ public class EnemyController : MonoBehaviour
     [System.NonSerialized]
     public UnityEvent<EnemyController> Died = new();
 
-    public List<Transform> WayPoints
-    {
-        get => _enemyMovement.WayPoints;
-        set => _enemyMovement.WayPoints = value;
-    }
+    public List<Transform> WayPoints { get; set; }
 
     void Start()
     {
         _enemyMovement = GetComponent<EnemyMovement>();
         _enemyMovement.ReachedEnd.AddListener(OnReachedEnd);
+        _enemyMovement.WayPoints = WayPoints;
 
         _health = GetComponent<Health>();
         _health.SetMaxHealth(EnemyData.Health);

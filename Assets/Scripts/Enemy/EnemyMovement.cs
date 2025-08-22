@@ -36,14 +36,14 @@ public class EnemyMovement : MonoBehaviour
             return;
         }
 
-        Vector3 direction = (_wayPoints[_waypointIndex].position - _wayPoints[_waypointIndex + 1].position).normalized;
+        Vector3 direction = (_wayPoints[_waypointIndex + 1].position - _wayPoints[_waypointIndex].position).normalized;
 
         transform.Translate(direction * (speed * Time.deltaTime));
 
         if (ReachedWayPoint())
         {
             ++_waypointIndex;
-            if (_waypointIndex >= _wayPoints.Count)
+            if (_waypointIndex >= _wayPoints.Count - 1)
             {
                 _reachedEnd = true;
                 ReachedEnd.Invoke();
