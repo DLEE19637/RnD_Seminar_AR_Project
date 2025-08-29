@@ -7,7 +7,8 @@ using UnityEngine.Events;
 public class EnemyController : MonoBehaviour
 {
     [SerializeField]
-    private EnemyData EnemyData;
+    private EnemyData _enemyData;
+    public EnemyData EnemyData { get => _enemyData; }
     private EnemyMovement _enemyMovement;
     private Health _health;
 
@@ -25,7 +26,7 @@ public class EnemyController : MonoBehaviour
         _enemyMovement.WayPoints = WayPoints;
 
         _health = GetComponent<Health>();
-        _health.SetMaxHealth(EnemyData.Health);
+        _health.SetMaxHealth(_enemyData.Health);
         _health.Died.AddListener(OnDied);
     }
 
@@ -38,6 +39,7 @@ public class EnemyController : MonoBehaviour
     {
         Died.Invoke(this);
 
+        ClearEvents();
         Destroy(gameObject);
     }
 
@@ -45,12 +47,21 @@ public class EnemyController : MonoBehaviour
     {
         ReachedEnd.Invoke(this);
 
+        ClearEvents();
         Destroy(gameObject);
     }
 
     // Update is called once per frame
     void Update()
     {
-        _enemyMovement.Move(EnemyData.Speed);
+        _enemyMovement.Move(_enemyData.Speed);
+    }
+
+    private void ClearEvents()
+    {
+        Died.RemoveAllListeners();
+        ReachedEnd.RemoveAllListeners();
+        _enemyMovement.ReachedEnd.RemoveAllListeners();
+        _health.Died.RemoveAllListeners();
     }
 }
