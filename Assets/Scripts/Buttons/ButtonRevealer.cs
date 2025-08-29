@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -17,6 +18,7 @@ public class ButtonRevealer : MonoBehaviour
     {
         _toggle = !_toggle;
 
+        Console.Write("Here");
         foreach (var button in _hiddenButtons)
         {
             button.SetActive(_toggle);
