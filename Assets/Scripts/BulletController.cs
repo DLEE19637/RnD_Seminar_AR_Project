@@ -11,14 +11,12 @@ public class BulletController : MonoBehaviour
     private int damage;
     private float speed;
 
-    //private float lifeTime = 10f;
-
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         speed = BulletData.Speed;
         damage = BulletData.Damage;
     }
+
     public void SetTarget(Transform enemyTarget)
     {
         EnemyTarget = enemyTarget;
@@ -44,15 +42,6 @@ public class BulletController : MonoBehaviour
 
         transform.Translate(direction.normalized * distanceThisFrame, Space.World);
         transform.LookAt(EnemyTarget);
-
-        //if (lifeTime <= 0f)
-        //{
-        //    Destroy(gameObject);
-        //}
-        //else
-        //{
-        //    lifeTime -= Time.deltaTime;
-        //}
     }
 
     void HitTarget()
@@ -65,12 +54,9 @@ public class BulletController : MonoBehaviour
     }
     void Damage(Transform enemy)
     {
-        EnemyController enemeyController = enemy.GetComponent<EnemyController>();
-
-        if (enemeyController != null)
+        if (enemy.TryGetComponent<EnemyController>(out var enemyController))
         {
-            enemeyController.Damage(damage);
+            enemyController.Damage(damage);
         }
     }
-
 }

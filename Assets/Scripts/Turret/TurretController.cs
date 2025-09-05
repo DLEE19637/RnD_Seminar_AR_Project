@@ -56,6 +56,7 @@ public class TurretController : MonoBehaviour
         Vector3 rotation = Quaternion.Lerp(TurretRotation.rotation, lookRotation, Time.deltaTime * TurretData.RotationSpeed).eulerAngles;
         TurretRotation.rotation = Quaternion.Euler(0f, rotation.y, 0f);
     }
+
     bool IsTargetAligned()
     {
         Vector3 dirToTarget = (Target.transform.position - TurretRotation.position).normalized;
@@ -71,6 +72,12 @@ public class TurretController : MonoBehaviour
         if (bullet != null)
         {
             bulletController.SetTarget(Target.transform);
+        }
+        else
+        {
+            Debug.LogError($"{gameObject.name}." +
+                $"{nameof(TurretController)}.{nameof(Shoot)}: " +
+                $"BulletPrefab does not contain a BulletController");
         }
     }
 
