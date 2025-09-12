@@ -16,6 +16,6 @@ MonoBehaviour:
     type: 3}
   Name: TestTurret1
   Cost: 0
-  Range: 5
+  Range: 0.3
   FireRate: 1.2
   RotationSpeed: 1

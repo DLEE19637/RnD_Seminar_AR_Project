@@ -169,7 +169,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f00476341ea209848a14719e508a9514, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _waypointReachedDistance: 0.1
+  _waypointReachedDistance: 0.03
   ReachedEnd:
     m_PersistentCalls:
       m_Calls: []
