@@ -16,4 +16,5 @@ MonoBehaviour:
     type: 3}
   EnemyName: Test2
   Health: 100
-  Speed: 1
+  Speed: 0.25
+  KillReward: 0

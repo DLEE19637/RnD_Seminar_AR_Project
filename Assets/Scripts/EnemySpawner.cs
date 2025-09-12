@@ -19,9 +19,6 @@ public class EnemySpawner : MonoBehaviour
     private readonly int _currentWaveIndex = 0;
     private readonly int _currentLevelIndex = 0;
 
-    [SerializeField]
-    private List<Transform> Waypoints = new();
-
     // Update is called once per frame
 
     private void Awake()
@@ -29,9 +26,14 @@ public class EnemySpawner : MonoBehaviour
         _timer = _waveInterval;
     }
 
-    private void Update()
+	private void Start()
+	{
+        GameManager.Instance.RegisterEnemySpawn(this);
+		DrawWayPoints();
+	}
+
+	private void Update()
     {
-        DrawWayPoints();
         _timer -= Time.deltaTime;
         if (_timer > 0)
         {
@@ -58,17 +60,15 @@ public class EnemySpawner : MonoBehaviour
 
     private EnemyController SpawnEnemy(GameObject enemy)
     {
-        var enemyObject = Instantiate(enemy, Waypoints.First().position, Quaternion.identity);
-        var enemyController = enemyObject.GetComponent<EnemyController>();
-        enemyController.WayPoints = Waypoints;
-        return enemyController;
+        var enemyObject = Instantiate(enemy, transform.position, Quaternion.identity);
+        return enemyObject.GetComponent<EnemyController>();
     }
 
     private void DrawWayPoints()
     {
-        for (int i = 0; i < Waypoints.Count - 1; ++i)
+        for (int i = 0; i < GameManager.Instance.WayPoints.Count - 1; ++i)
         {
-            Debug.DrawLine(Waypoints[i].position, Waypoints[i + 1].position);
+            Debug.DrawLine(GameManager.Instance.WayPoints[i].transform.position, GameManager.Instance.WayPoints[i + 1].transform.position);
         }
     }
 }
