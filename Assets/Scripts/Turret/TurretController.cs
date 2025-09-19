@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 [RequireComponent(typeof(TurretTargetManager))]
@@ -16,6 +17,7 @@ public class TurretController : MonoBehaviour
 
     private TurretTargetManager _turretTargetManager;
 
+    [NonSerialized]
     public EnemyController Target;
 
     private float _shootingCooldown = 0f;
@@ -56,8 +58,13 @@ public class TurretController : MonoBehaviour
         Vector3 rotation = Quaternion.Lerp(TurretRotation.rotation, lookRotation, Time.deltaTime * TurretData.RotationSpeed).eulerAngles;
         TurretRotation.rotation = Quaternion.Euler(0f, rotation.y, 0f);
     }
+
     bool IsTargetAligned()
     {
+        if (Target == null)
+        {
+            return false;
+        }
         Vector3 dirToTarget = (Target.transform.position - TurretRotation.position).normalized;
         float angle = Vector3.Angle(TurretRotation.forward, dirToTarget);
         return angle < 20f;
@@ -71,6 +78,12 @@ public class TurretController : MonoBehaviour
         if (bullet != null)
         {
             bulletController.SetTarget(Target.transform);
+        }
+        else
+        {
+            Debug.LogError($"{gameObject.name}." +
+                $"{nameof(TurretController)}.{nameof(Shoot)}: " +
+                $"BulletPrefab does not contain a BulletController");
         }
     }
 

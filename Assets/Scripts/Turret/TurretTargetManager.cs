@@ -37,6 +37,8 @@ public class TurretTargetManager : MonoBehaviour
 
     public EnemyController? ProvideTarget()
     {
+        _enemiesWithinTrigger.RemoveAll(enemy => enemy == null);
+
         if (_enemiesWithinTrigger.Count == 0)
         {
             return null;
