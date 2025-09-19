@@ -8,6 +8,9 @@ public class SoundManager : MonoBehaviour
     [SerializeField]
     private AudioSource soundEffectSource;
 
+    [SerializeField]
+    private AudioSource uiSource;
+
     private void Awake()
     {
         if (Instance == null)
@@ -21,8 +24,13 @@ public class SoundManager : MonoBehaviour
         }
     }
 
-    public void PlaySoundEffect(AudioClip audiocCLip)
+    public void PlaySoundEffect(AudioClip audioCLip)
     {
-        soundEffectSource.PlayOneShot(audiocCLip);
+        soundEffectSource.PlayOneShot(audioCLip);
+    }
+
+    public void PlayUISound(AudioClip audioCLip)
+    {
+        uiSource.PlayOneShot(audioCLip);
     }
 }

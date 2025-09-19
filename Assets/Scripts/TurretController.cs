@@ -5,14 +5,14 @@ public class TurretController : MonoBehaviour
 {
     [SerializeField]
     private TurretData TurretData;
-
     [SerializeField]
     private GameObject BulletPrefab;
-
     [SerializeField]
     private Transform TurretRotation;
     [SerializeField]
     private Transform BulletSpawn;
+    [SerializeField]
+    private AudioClip TurretShootSound;
 
     public Transform Target;
 
@@ -88,6 +88,7 @@ public class TurretController : MonoBehaviour
 
     void Shoot()
     {
+        SoundManager.Instance.PlaySoundEffect(TurretShootSound);
         GameObject bullet = Instantiate(BulletPrefab, BulletSpawn.position, BulletSpawn.rotation);
         BulletController bulletController = bullet.GetComponent<BulletController>();
 
