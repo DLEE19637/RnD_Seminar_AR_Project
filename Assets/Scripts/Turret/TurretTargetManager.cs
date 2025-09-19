@@ -27,7 +27,8 @@ public class TurretTargetManager : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (!other.TryGetComponent<EnemyController>(out var enemyController))
+        EnemyController? enemyController = other.GetComponent<EnemyController>();
+        if (enemyController == null)
         {
             return;
         }
