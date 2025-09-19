@@ -28,7 +28,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
+  m_LocalScale: {x: 0.03, y: 0.03, z: 0.03}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6867660411366037001}
@@ -98,6 +98,7 @@ GameObject:
   - component: {fileID: 7338273101686955317}
   - component: {fileID: 3967024901743759202}
   - component: {fileID: 3398821621080657946}
+  - component: {fileID: 8713030936927128697}
   m_Layer: 0
   m_Name: WayPointTempPrefab
   m_TagString: Untagged
@@ -163,7 +164,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 0.1
+  m_Radius: 0.015
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &3398821621080657946
 MonoBehaviour:
@@ -188,3 +189,15 @@ MonoBehaviour:
   m_Elasticity: 0.15
   m_EnableElasticBreakLimit: 0
   m_ElasticBreakLimit: 0.5
+--- !u!114 &8713030936927128697
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7324499424407042413}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27b9c9a997fe5d842853266e51b57485, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
