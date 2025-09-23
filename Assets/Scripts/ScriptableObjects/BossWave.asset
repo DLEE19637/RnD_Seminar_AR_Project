@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 939142872778c854d967b64660e790a2, type: 3}
-  m_Name: TestWave1
+  m_Name: BossWave
   m_EditorClassIdentifier: 
   Enemies:
+  - EnemyData: {fileID: 11400000, guid: 65d3200c37da49d4aaaa06a504ce4f4c, type: 2}
+    SpawnInterval: 4
+    Count: 3
+  - EnemyData: {fileID: 11400000, guid: 79a12beb5107a7947a793db207350900, type: 2}
+    SpawnInterval: 3
+    Count: 1
   - EnemyData: {fileID: 11400000, guid: c70c1f0a832c42945af03cce4d7c3378, type: 2}
-    SpawnInterval: 2
-    Count: 4
-  - EnemyData: {fileID: 11400000, guid: 3b1f2998e3735e74aa39accfaba09a3f, type: 2}
-    SpawnInterval: 2
+    SpawnInterval: 3
     Count: 5
-  - EnemyData: {fileID: 11400000, guid: d59980b64470dd948b14418d0e936d98, type: 2}
-    SpawnInterval: 2
-    Count: 9

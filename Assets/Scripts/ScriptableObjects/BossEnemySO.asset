@@ -9,13 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 301edc57471335f43888e6ed29f2c863, type: 3}
-  m_Name: TesTurret1
+  m_Script: {fileID: 11500000, guid: 5e87248c11ec2d44fb2210f9e02ee34b, type: 3}
+  m_Name: BossEnemySO
   m_EditorClassIdentifier: 
-  TurretPrefab: {fileID: 7561719308098516786, guid: e1d24735646e0284fa8c058bb1dad7cb,
+  EnemyPrefab: {fileID: 3849255141773793275, guid: 2cd2b15e7d72b264a9778e835d0f1a8d,
     type: 3}
-  Name: TestTurret1
-  Cost: 0
-  Range: 0.3
-  FireRate: 1.2
-  RotationSpeed: 10
+  EnemyName: BossEnemy
+  Health: 1000
+  Speed: 0.08
+  KillReward: 0
+  Type: 2

@@ -597,6 +597,7 @@ MonoBehaviour:
     type: 3}
   TurretRotation: {fileID: 8246185101576029272}
   BulletSpawn: {fileID: 7221131046113438777}
+  TurretShootSound: {fileID: 8300000, guid: 134dc95ec8ca87a46bd650d80c38767b, type: 3}
   Target: {fileID: 0}
 --- !u!1001 &8912632828357176642
 PrefabInstance:

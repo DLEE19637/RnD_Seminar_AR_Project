@@ -8,4 +8,12 @@ public class EnemyData : ScriptableObject
     public int Health;
     public float Speed;
     public int KillReward;
+    public EnemyType Type = EnemyType.Basic;
+}
+
+public enum EnemyType
+{
+    Basic,
+    Speedy,
+    Boss
 }

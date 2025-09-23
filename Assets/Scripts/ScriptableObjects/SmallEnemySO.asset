@@ -10,11 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5e87248c11ec2d44fb2210f9e02ee34b, type: 3}
-  m_Name: TestEnemy2
+  m_Name: SmallEnemySO
   m_EditorClassIdentifier: 
-  EnemyPrefab: {fileID: 4515120280508738809, guid: 6b9136a952f47044b9aa6f7d7d581b2a,
+  EnemyPrefab: {fileID: 2677109248068190375, guid: d474f6a79d2eb3d409a23911284a4fb1,
     type: 3}
-  EnemyName: Test2
-  Health: 100
-  Speed: 0.25
+  EnemyName: SmallEnemy
+  Health: 70
+  Speed: 0.6
   KillReward: 0
+  Type: 0
