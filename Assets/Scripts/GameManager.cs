@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
@@ -25,6 +26,22 @@ public class GameManager : MonoBehaviour
     public EnemySpawner EnemySpawn;
     public bool HasBase => Base != null;
     public bool HasEnemySpawn => EnemySpawn != null;
+    private int _currentWave;
+	public int CurrentWave
+    {
+        get => _currentWave;
+        set
+        {
+            _currentWave = value;
+            UpdateWaveCounterText();
+        }
+    }
+
+    public int RemainingEnemies;
+    public bool IsGameWon = false;
+
+    public TextMeshProUGUI WaveCounterText;
+
 
 	public void SetState(GameState newState)
     {
@@ -53,5 +70,26 @@ public class GameManager : MonoBehaviour
             Destroy(EnemySpawn.gameObject);
         }
         EnemySpawn = enemySpawn;
+    }
+
+    public void SetRemainingEnemies(int remainingEnemies)
+    {
+        RemainingEnemies = remainingEnemies;
+    }
+
+    public void RemoveEnemy()
+    {
+        RemainingEnemies--;
+    }
+
+    public void OnGameWin()
+    {
+        IsGameWon = true;
+        Debug.Log("All waves cleared. User won!");
+    }
+
+    private void UpdateWaveCounterText()
+    {
+        WaveCounterText.text = $"Wave: {CurrentWave + 1}";
     }
 }
