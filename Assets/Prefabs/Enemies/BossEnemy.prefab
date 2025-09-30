@@ -121,6 +121,8 @@ GameObject:
   - component: {fileID: 6049291770046020161}
   - component: {fileID: 4495652941091802526}
   - component: {fileID: 1101012702980514963}
+  - component: {fileID: 9058963499369534055}
+  - component: {fileID: 2622043893019617206}
   m_Layer: 0
   m_Name: BossEnemy
   m_TagString: Enemy
@@ -196,6 +198,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _enemyData: {fileID: 11400000, guid: 79a12beb5107a7947a793db207350900, type: 2}
+  Speed: 0
 --- !u!114 &1101012702980514963
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -210,6 +213,54 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _regenerationAmount: 50
   _cooldown: 5
+--- !u!54 &9058963499369534055
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3849255141773793275}
+  serializedVersion: 5
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!135 &2622043893019617206
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3849255141773793275}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.022
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &6158988831634459478
 PrefabInstance:
   m_ObjectHideFlags: 0

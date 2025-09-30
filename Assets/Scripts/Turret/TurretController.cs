@@ -14,17 +14,21 @@ public class TurretController : MonoBehaviour
     private Transform TurretRotation;
     [SerializeField]
     private Transform BulletSpawn;
-
+    [SerializeField]
+    private AudioClip TurretShootSound;
     private TurretTargetManager _turretTargetManager;
 
     [NonSerialized]
     public EnemyController Target;
 
     private float _shootingCooldown = 0f;
+    private SphereCollider _detectionCollider;
 
     private void Awake()
     {
         _turretTargetManager = GetComponent<TurretTargetManager>();
+        _detectionCollider = GetComponent<SphereCollider>();
+        _detectionCollider.radius = TurretData.Range;
     }
 
     void Update()
@@ -72,6 +76,7 @@ public class TurretController : MonoBehaviour
 
     void Shoot()
     {
+        SoundManager.Instance.PlaySoundEffect(TurretShootSound);
         GameObject bullet = Instantiate(BulletPrefab, BulletSpawn.position, BulletSpawn.rotation);
         BulletController bulletController = bullet.GetComponent<BulletController>();
 

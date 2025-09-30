@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 301edc57471335f43888e6ed29f2c863, type: 3}
-  m_Name: TesTurret1
+  m_Name: BombTurretSO
   m_EditorClassIdentifier: 
-  TurretPrefab: {fileID: 7561719308098516786, guid: e1d24735646e0284fa8c058bb1dad7cb,
+  TurretPrefab: {fileID: 7561719308098516786, guid: f7e12dda0aca20245a9485e09db47069,
     type: 3}
-  Name: TestTurret1
+  Name: BombTurret
   Cost: 0
-  Range: 0.3
-  FireRate: 1.2
-  RotationSpeed: 10
+  Range: 7
+  FireRate: 0.8
+  RotationSpeed: 5
