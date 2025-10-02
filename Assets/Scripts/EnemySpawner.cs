@@ -13,13 +13,11 @@ public class EnemySpawner : MonoBehaviour
 
 
     [SerializeField]
-    private float _waveInterval = 10f;
+    private float _waveInterval = 5f;
     private float _timer = 0;
 
-    private readonly int _currentWaveIndex = 0;
-    private readonly int _currentLevelIndex = 0;
-
-    // Update is called once per frame
+    private bool waveSpawned = false;
+    private bool hasGameEnded = false;
 
     private void Awake()
     {
@@ -29,24 +27,49 @@ public class EnemySpawner : MonoBehaviour
 	private void Start()
 	{
         GameManager.Instance.RegisterEnemySpawn(this);
-		DrawWayPoints();
+        GameManager.Instance.CurrentWave = 0;
+		GameManager.Instance.SetRemainingEnemies(Levels[GameManager.Instance.CurrentWave].Enemies.Select(wave => wave.Count).Sum());
 	}
 
 	private void Update()
     {
         _timer -= Time.deltaTime;
-        if (_timer > 0)
+        if (_timer > 0 || GameManager.Instance.IsGameWon)
         {
             return;
         }
 
-        StartSpawning(Levels[_currentLevelIndex].Enemies[_currentWaveIndex]);
-        _timer = _waveInterval;
-    }
+        if(GameManager.Instance.RemainingEnemies > 0 && !waveSpawned)
+        {
+			StartSpawning(Levels[GameManager.Instance.CurrentWave]);
+            waveSpawned = true;
+            return;
+		} 
 
-    private void StartSpawning(WaveEntry waveEntry)
+        if (GameManager.Instance.RemainingEnemies == 0 &&
+            Levels.Count - 1 >= GameManager.Instance.CurrentWave) 
+        {
+			GameManager.Instance.CurrentWave++;
+
+            if(Levels.Count == GameManager.Instance.CurrentWave)
+            {
+				GameManager.Instance.OnGameWin();
+				GameManager.Instance.CurrentWave--;
+			}
+            else
+            {
+				GameManager.Instance.SetRemainingEnemies(Levels[GameManager.Instance.CurrentWave].Enemies.Select(wave => wave.Count).Sum());
+				waveSpawned = false;
+			} 
+        }
+	}
+
+    private void StartSpawning(LevelData level)
     {
-        StartCoroutine(SpawnWave(waveEntry));
+        level.Enemies.ForEach(wave =>
+        {
+			StartCoroutine(SpawnWave(wave));
+		});
     }
 
     private IEnumerator SpawnWave(WaveEntry waveEntry)
@@ -62,13 +85,5 @@ public class EnemySpawner : MonoBehaviour
     {
         var enemyObject = Instantiate(enemy, transform.position, Quaternion.identity);
         return enemyObject.GetComponent<EnemyController>();
-    }
-
-    private void DrawWayPoints()
-    {
-        for (int i = 0; i < GameManager.Instance.WayPoints.Count - 1; ++i)
-        {
-            Debug.DrawLine(GameManager.Instance.WayPoints[i].transform.position, GameManager.Instance.WayPoints[i + 1].transform.position);
-        }
     }
 }

@@ -160,4 +160,5 @@ MonoBehaviour:
       m_Calls: []
   Levels:
   - {fileID: 11400000, guid: d896b69f66999a043b4c36dce678e39d, type: 2}
-  _waveInterval: 10
+  - {fileID: 11400000, guid: 140c0bd9dca60a64d8a0d27995c1ff6b, type: 2}
+  _waveInterval: 3
