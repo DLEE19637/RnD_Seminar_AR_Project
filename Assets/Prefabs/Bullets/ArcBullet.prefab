@@ -30,7 +30,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5905628060397206929}
@@ -48,7 +48,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 996fba6ab6bf39c44879567f02d0a917, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BulletData: {fileID: 11400000, guid: f01279004146b2141a7cb7c01914ede8, type: 2}
+  BulletData: {fileID: 11400000, guid: 71285ae7492b5934186b42985631438f, type: 2}
+  _bulletSound: {fileID: 8300000, guid: 1fd31868d68903d4f9e2c4a3b7ef98f3, type: 3}
 --- !u!114 &5457454674079159658
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -62,8 +63,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _hitRange: 0.01
-  Velocity: 0.05
-  _gravity: 9.81
+  Velocity: 0.5
+  _gravity: 4.5
 --- !u!135 &-7368096533229902691
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -83,7 +84,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 0.4
+  m_Radius: 0.1
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &2069515127676578038
 MonoBehaviour:
@@ -126,7 +127,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
+  m_LocalScale: {x: 0.02, y: 0.02, z: 0.02}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2294155723089742949}

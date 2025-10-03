@@ -10,6 +10,9 @@ public class BulletController : MonoBehaviour
     private BulletHitBehaviourBase _bulletHitBehaviour;
     private Transform _enemyTarget;
 
+    [SerializeField]
+    private AudioClip _bulletSound;
+
     void Awake()
     {
         _bulletMovement = GetComponent<BulletMovement>();
@@ -37,6 +40,7 @@ public class BulletController : MonoBehaviour
         _bulletMovement.Move();
         if (_bulletMovement.HasReachedTarget())
         {
+            SoundManager.Instance.PlaySoundEffect(_bulletSound);
             _bulletHitBehaviour.Trigger(_enemyTarget);
         }
     }

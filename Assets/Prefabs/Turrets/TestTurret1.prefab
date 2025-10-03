@@ -597,6 +597,7 @@ MonoBehaviour:
     type: 3}
   TurretRotation: {fileID: 8246185101576029272}
   BulletSpawn: {fileID: 7221131046113438777}
+  TurretShootSound: {fileID: 8300000, guid: a764377339b869e459f5e53fb9258f73, type: 3}
   Target: {fileID: 0}
 --- !u!1001 &158844697581435583
 PrefabInstance:
@@ -720,6 +721,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: TurretUI
+      objectReference: {fileID: 0}
+    - target: {fileID: 3132082791340415743, guid: e37a37a680dc5f649b4fa500c7b8fb5f,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
