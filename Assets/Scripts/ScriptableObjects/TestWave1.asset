@@ -20,5 +20,5 @@ MonoBehaviour:
     SpawnInterval: 2
     Count: 5
   - EnemyData: {fileID: 11400000, guid: d59980b64470dd948b14418d0e936d98, type: 2}
-    SpawnInterval: 2
+    SpawnInterval: 1
     Count: 9

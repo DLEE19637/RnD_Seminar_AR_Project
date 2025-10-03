@@ -43,7 +43,8 @@ public class EnemyController : MonoBehaviour
         Died.Invoke(this);
 
         ClearEvents();
-        Destroy(gameObject);
+		GameManager.Instance.RemoveEnemy();
+		Destroy(gameObject);
     }
 
     private void OnReachedEnd()
@@ -51,6 +52,7 @@ public class EnemyController : MonoBehaviour
         ReachedEnd.Invoke(this);
 
         ClearEvents();
+        GameManager.Instance.RemoveEnemy();
         Destroy(gameObject);
     }
 
