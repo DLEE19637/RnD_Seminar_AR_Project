@@ -64,7 +64,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _hitRange: 0.01
   Velocity: 0.5
-  _gravity: 4.5
+  _gravity: 2.8
 --- !u!135 &-7368096533229902691
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -163,7 +163,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 594ea882c5a793440b60ff72d896021e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

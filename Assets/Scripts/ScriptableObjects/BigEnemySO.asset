@@ -17,5 +17,5 @@ MonoBehaviour:
   EnemyName: Big
   Health: 400
   Speed: 0.07
-  KillReward: 0
+  KillReward: 80
   Type: 0

@@ -44,6 +44,7 @@ public class EnemyController : MonoBehaviour
 
         ClearEvents();
 		GameManager.Instance.RemoveEnemy();
+        MoneyManager.Instance.ObtainEnemyReward(EnemyData.KillReward);
 		Destroy(gameObject);
     }
 
@@ -53,6 +54,7 @@ public class EnemyController : MonoBehaviour
 
         ClearEvents();
         GameManager.Instance.RemoveEnemy();
+        GameManager.Instance.LoseHealth();
         Destroy(gameObject);
     }
 

@@ -16,6 +16,6 @@ MonoBehaviour:
     type: 3}
   EnemyName: BossEnemy
   Health: 1000
-  Speed: 0.08
-  KillReward: 0
+  Speed: 0.05
+  KillReward: 500
   Type: 2
