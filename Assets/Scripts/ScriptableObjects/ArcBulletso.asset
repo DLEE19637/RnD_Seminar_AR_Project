@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f820316466d32954a855409fe17f7d4e, type: 3}
-  m_Name: TestBullet2
+  m_Name: ArcBulletso
   m_EditorClassIdentifier: 
   BulletPrefab: {fileID: 2651024198162392969, guid: 8c5be141eebe1bd42b61defa35fed71d,
     type: 3}

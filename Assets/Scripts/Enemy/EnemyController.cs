@@ -47,6 +47,7 @@ public class EnemyController : MonoBehaviour
 
         ClearEvents();
 		GameManager.Instance.RemoveEnemy();
+        MoneyManager.Instance.ObtainEnemyReward(EnemyData.KillReward);
         deadParticles.transform.parent = null;
         deadParticles.Play();
         Destroy(deadParticles, 1f);
@@ -59,6 +60,7 @@ public class EnemyController : MonoBehaviour
 
         ClearEvents();
         GameManager.Instance.RemoveEnemy();
+        GameManager.Instance.LoseHealth();
         Destroy(gameObject);
     }
 

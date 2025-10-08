@@ -15,7 +15,7 @@ MonoBehaviour:
   TurretPrefab: {fileID: 7561719308098516786, guid: e1d24735646e0284fa8c058bb1dad7cb,
     type: 3}
   Name: TestTurret1
-  Cost: 0
+  Cost: 60
   Range: 4
   FireRate: 1.4
   RotationSpeed: 10

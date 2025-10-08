@@ -30,6 +30,7 @@ public class MoneyManager : MonoBehaviour
         }
 
         _instance = this;
+        _currentMoney = 500;
     }
 
     public bool IsAmountAvailable(int amount)
@@ -45,7 +46,14 @@ public class MoneyManager : MonoBehaviour
         }
 
         _currentMoney -= amount;
+        AmountUpdated.Invoke(_currentMoney);
         return true;
+    }
+
+    public void ObtainEnemyReward(int reward)
+    {
+        _currentMoney += reward;
+        AmountUpdated.Invoke(_currentMoney);
     }
 
     public void SubscribeEnemy(EnemyController enemyController)

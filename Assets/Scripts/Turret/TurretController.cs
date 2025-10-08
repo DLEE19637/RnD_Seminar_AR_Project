@@ -29,6 +29,10 @@ public class TurretController : MonoBehaviour
         _turretTargetManager = GetComponent<TurretTargetManager>();
         _detectionCollider = GetComponent<SphereCollider>();
         _detectionCollider.radius = TurretData.Range;
+        if (!MoneyManager.Instance.Spend(TurretData.Cost))
+        {
+            Destroy(this);
+        }
     }
 
     void Update()

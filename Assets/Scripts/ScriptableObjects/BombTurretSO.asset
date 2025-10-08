@@ -15,7 +15,7 @@ MonoBehaviour:
   TurretPrefab: {fileID: 7561719308098516786, guid: f7e12dda0aca20245a9485e09db47069,
     type: 3}
   Name: BombTurret
-  Cost: 0
+  Cost: 90
   Range: 7
   FireRate: 0.8
   RotationSpeed: 5

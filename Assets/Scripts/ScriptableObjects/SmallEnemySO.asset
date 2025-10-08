@@ -16,6 +16,6 @@ MonoBehaviour:
     type: 3}
   EnemyName: SmallEnemy
   Health: 70
-  Speed: 0.6
-  KillReward: 0
+  Speed: 0.4
+  KillReward: 20
   Type: 0

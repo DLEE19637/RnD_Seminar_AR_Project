@@ -16,5 +16,6 @@ MonoBehaviour:
     type: 3}
   EnemyName: Medium
   Health: 120
-  Speed: 0.33
-  KillReward: 0
+  Speed: 0.25
+  KillReward: 40
+  Type: 0

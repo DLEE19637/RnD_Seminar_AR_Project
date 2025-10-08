@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 using TMPro;
+using System;
 
 public class GameManager : MonoBehaviour
 {
@@ -38,10 +39,14 @@ public class GameManager : MonoBehaviour
     }
 
     public int RemainingEnemies;
+    [NonSerialized]
     public bool IsGameWon = false;
+    [NonSerialized]
+    public bool IsGameLost = false;
 
     public TextMeshProUGUI WaveCounterText;
-
+    [SerializeField]
+    private GameObject _loseScreen;
 
 	public void SetState(GameState newState)
     {
@@ -91,5 +96,21 @@ public class GameManager : MonoBehaviour
     private void UpdateWaveCounterText()
     {
         WaveCounterText.text = $"Wave: {CurrentWave + 1}";
+    }
+
+    public void LoseHealth()
+    {
+        Base.Health--;
+        if (Base.Health <= 0)
+        {
+            OnGameLost();
+        }
+    }
+    public void OnGameLost()
+    {
+        IsGameLost = true;
+        Time.timeScale = 0;
+        Debug.Log("Base destroyed. User lost!");
+        _loseScreen.SetActive(true);
     }
 }
