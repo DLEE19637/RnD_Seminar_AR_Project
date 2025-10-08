@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using System;
 
 [RequireComponent(typeof(EnemyMovement))]
 [RequireComponent(typeof(Health))]
@@ -12,14 +13,16 @@ public class EnemyController : MonoBehaviour
     private EnemyMovement _enemyMovement;
     private Health _health;
     private EnemyHealthRegenerator _enemyHealthRegenerator;
+    [SerializeField]
+    private ParticleSystem deadParticles;
 
-    public float Speed;
+	public float Speed;
     [System.NonSerialized]
     public UnityEvent<EnemyController> ReachedEnd = new();
     [System.NonSerialized]
     public UnityEvent<EnemyController> Died = new();
 
-    void Start()
+	void Start()
     {
         Speed = EnemyData.Speed;
         
@@ -44,6 +47,9 @@ public class EnemyController : MonoBehaviour
 
         ClearEvents();
 		GameManager.Instance.RemoveEnemy();
+        deadParticles.transform.parent = null;
+        deadParticles.Play();
+        Destroy(deadParticles, 1f);
 		Destroy(gameObject);
     }
 
