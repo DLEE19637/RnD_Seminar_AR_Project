@@ -14,7 +14,7 @@ public class NormalBulletHitBehaviour : BulletHitBehaviourBase
 
 		_hitParticle.transform.parent = null;
 		_hitParticle.Play();
-        Destroy(_hitParticle, 0.3f);
+        Destroy(_hitParticle.gameObject, 1f);
         Destroy(gameObject);
     }
 }

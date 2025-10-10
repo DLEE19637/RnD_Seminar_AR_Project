@@ -50,7 +50,7 @@ public class EnemyController : MonoBehaviour
         MoneyManager.Instance.ObtainEnemyReward(EnemyData.KillReward);
         deadParticles.transform.parent = null;
         deadParticles.Play();
-        Destroy(deadParticles, 1f);
+        Destroy(deadParticles.gameObject, 1f);
 		Destroy(gameObject);
     }
 
