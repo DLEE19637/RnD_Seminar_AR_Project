@@ -6,14 +6,20 @@ public class BulletExplosiveHitBehaviour : BulletHitBehaviourBase
 {
     private readonly List<EnemyController> _enemiesInRange = new();
 
-    public override void Trigger(Transform target)
+	[SerializeField]
+	private ParticleSystem _hitParticle;
+
+	public override void Trigger(Transform target)
     {
         foreach (var enemy in _enemiesInRange)
         {
             enemy.Damage(Damage);
         }
 
-        Destroy(gameObject);
+		_hitParticle.transform.parent = null;
+		_hitParticle.Play();
+		Destroy(_hitParticle.gameObject, 1f);
+		Destroy(gameObject);
     }
 
     private void OnTriggerEnter(Collider other)

@@ -24,6 +24,9 @@ public class TurretController : MonoBehaviour
     private float _shootingCooldown = 0f;
     private SphereCollider _detectionCollider;
 
+    [SerializeField]
+    private ParticleSystem fireParticles;
+
     private void Awake()
     {
         _turretTargetManager = GetComponent<TurretTargetManager>();
@@ -87,6 +90,7 @@ public class TurretController : MonoBehaviour
         if (bullet != null)
         {
             bulletController.SetTarget(Target.transform);
+            fireParticles.Play();
         }
         else
         {
