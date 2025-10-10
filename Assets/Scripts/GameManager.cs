@@ -47,8 +47,10 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI WaveCounterText;
     [SerializeField]
     private GameObject _loseScreen;
+    [SerializeField]
+    private BaseHealthUI _baseHealthUi;
 
-	public void SetState(GameState newState)
+    public void SetState(GameState newState)
     {
         CurrentState = newState;
         Debug.Log("Game state changed to: " + newState);
@@ -61,6 +63,7 @@ public class GameManager : MonoBehaviour
             Destroy(Base.gameObject);
         }
         Base = playerBase;
+        Base.Health = 5;
     }
 
     public void RegisterWayPoint(WayPoint wayPoint)
@@ -101,6 +104,7 @@ public class GameManager : MonoBehaviour
     public void LoseHealth()
     {
         Base.Health--;
+        _baseHealthUi.UpdateLives(Base.Health);
         if (Base.Health <= 0)
         {
             OnGameLost();
