@@ -800,7 +800,7 @@ PrefabInstance:
     - target: {fileID: 8486701588227550151, guid: a058d51ecdbcdca49910fc3c0cd44cfe,
         type: 3}
       propertyPath: Levels.Array.size
-      value: 2
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8486701588227550151, guid: a058d51ecdbcdca49910fc3c0cd44cfe,
         type: 3}
@@ -813,6 +813,24 @@ PrefabInstance:
       propertyPath: 'Levels.Array.data[1]'
       value: 
       objectReference: {fileID: 11400000, guid: d896b69f66999a043b4c36dce678e39d,
+        type: 2}
+    - target: {fileID: 8486701588227550151, guid: a058d51ecdbcdca49910fc3c0cd44cfe,
+        type: 3}
+      propertyPath: 'Levels.Array.data[2]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 140c0bd9dca60a64d8a0d27995c1ff6b,
+        type: 2}
+    - target: {fileID: 8486701588227550151, guid: a058d51ecdbcdca49910fc3c0cd44cfe,
+        type: 3}
+      propertyPath: 'Levels.Array.data[3]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 394c46111de9d3a4489a774f9d29d060,
+        type: 2}
+    - target: {fileID: 8486701588227550151, guid: a058d51ecdbcdca49910fc3c0cd44cfe,
+        type: 3}
+      propertyPath: 'Levels.Array.data[4]'
+      value: 
+      objectReference: {fileID: 11400000, guid: bef4e0e4f00a4394091bc16ab9817d1c,
         type: 2}
     - target: {fileID: 8486701588227550151, guid: a058d51ecdbcdca49910fc3c0cd44cfe,
         type: 3}
@@ -2478,6 +2496,7 @@ MonoBehaviour:
   RemainingEnemies: 0
   WaveCounterText: {fileID: 581705178}
   _loseScreen: {fileID: 0}
+  _baseHealthUi: {fileID: 0}
 --- !u!4 &2023055477
 Transform:
   m_ObjectHideFlags: 0

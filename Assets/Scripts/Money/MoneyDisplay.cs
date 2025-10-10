@@ -9,6 +9,7 @@ public class MoneyDisplay : MonoBehaviour
     private void Awake()
     {
         _textMesh = GetComponent<TextMeshProUGUI>();
+        _textMesh.text = "500";
     }
     private void Start()
     {
